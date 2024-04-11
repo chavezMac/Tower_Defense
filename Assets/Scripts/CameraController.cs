@@ -3,21 +3,22 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private bool doMovement = true;
-   public float panSpeed = 30f;
-   public float panBorderThickness = 10f;
+    public float panSpeed = 30f;
+    public float panBorderThickness = 10f;
 
-   public float scrollSpeed = 5f;
-   public float minY = 10f;
+    public float scrollSpeed = 5f;
+    public float minY = 10f;
     public float maxY = 80f;
-   void Update()
-   {
+    void Update()
+    {
 
         if(GameManager.GameIsOver)
         {
             this.enabled = false;
             return;
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
+
+        if(Input.GetKeyDown("l"))
         {
             doMovement = !doMovement;
         }
@@ -25,7 +26,7 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-
+        
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
             transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
